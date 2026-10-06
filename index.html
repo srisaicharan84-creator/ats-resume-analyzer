@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATS Resume Builder &amp; Skill Gap Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">Career tools</p>
+    <h1>ATS Resume Builder &amp; Skill Gap Analyzer</h1>
+    <p class="lede">Rewrite your background into an ATS-friendly resume, then see how well you match the target role.</p>
+  </header>
+
+  <main>
+    <section class="panel form-panel" aria-labelledby="input-heading">
+      <h2 id="input-heading">Your details</h2>
+      <form id="resume-form">
+        <label for="target-role">Target Role &amp; Company</label>
+        <input
+          type="text"
+          id="target-role"
+          name="targetRole"
+          placeholder="e.g. Senior Product Manager at Stripe"
+          autocomplete="off"
+          required
+        >
+
+        <label for="background-text">Your background / resume text</label>
+        <textarea
+          id="background-text"
+          name="backgroundText"
+          rows="14"
+          placeholder="Paste your current resume, work history, education, and skills…"
+          required
+        ></textarea>
+
+        <p id="form-error" class="form-error" hidden></p>
+
+        <button type="submit" id="generate-btn">Generate Resume</button>
+      </form>
+    </section>
+
+    <section id="dashboard" class="dashboard" hidden>
+      <div class="dashboard-toolbar">
+        <h2>Output dashboard</h2>
+        <button type="button" id="download-pdf">Download PDF</button>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="preview-column">
+          <div id="resume-preview"></div>
+        </div>
+
+        <aside class="analytics" aria-label="Resume analytics">
+          <article class="card card-match">
+            <h3>Match Probability (%)</h3>
+            <p id="match-probability" class="match-value">—</p>
+          </article>
+
+          <article class="card">
+            <h3>Skills You Have</h3>
+            <ul id="present-skills" class="skill-list"></ul>
+          </article>
+
+          <article class="card">
+            <h3>Missing Skills</h3>
+            <ul id="missing-skills" class="skill-list"></ul>
+          </article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
